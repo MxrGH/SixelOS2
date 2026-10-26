@@ -1,0 +1,59 @@
+# SixelOS, made with the linuxlive.com wizard on 2026-10-26.
+# Build it in your own GitHub from https://github.com/Eric-Ness/linuxlive-distro (see README.md)
+schema_version: 1
+name: "SixelOS"
+version: "1S"
+base: ubuntu
+desktop: kde
+apps:
+  - firefox
+  - libreoffice
+  - vlc
+  - steam
+  - krita
+  - gimp
+  - blender
+  - vscode
+  - discord
+  - heroic
+flathub:
+  - org.prismlauncher.PrismLauncher
+  - com.usebottles.bottles
+  - net.davidotek.pupgui2
+  - com.protonvpn.www
+  - io.github.kolunmi.Bazaar
+branding:
+  wallpaper: assets/wallpaper.png
+  logo: assets/logo.png
+  accent_color: "#e0661f"
+  splash:
+    script: assets/splash/splash.script
+    images:
+      - assets/splash/logo.png
+      - assets/splash/spinner-00.png
+      - assets/splash/spinner-01.png
+      - assets/splash/spinner-02.png
+      - assets/splash/spinner-03.png
+      - assets/splash/spinner-04.png
+      - assets/splash/spinner-05.png
+      - assets/splash/spinner-06.png
+      - assets/splash/spinner-07.png
+      - assets/splash/spinner-08.png
+      - assets/splash/spinner-09.png
+      - assets/splash/spinner-10.png
+      - assets/splash/spinner-11.png
+settings:
+  hostname: sixelpc
+  autologin: true
+  dock:
+    - firefox
+    - vlc
+    - steam
+    - krita
+    - blender
+    - vscode
+    - discord
+    - heroic
+    - org.prismlauncher.PrismLauncher
+    - com.protonvpn.www
+persistence: true

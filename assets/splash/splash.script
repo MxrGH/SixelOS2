@@ -1,0 +1,38 @@
+# SixelOS Plymouth boot theme
+# Assets are installed in /usr/share/plymouth/themes/sixelos/
+
+Window.SetBackgroundTopColor(0, 0, 0);
+Window.SetBackgroundBottomColor(0, 0, 0);
+
+logo_image = Image("logo.png");
+logo_sprite = Sprite(logo_image);
+logo_sprite.SetX(Window.GetX() + (Window.GetWidth() - logo_image.GetWidth()) / 2);
+logo_sprite.SetY(Window.GetY() + (Window.GetHeight() - logo_image.GetHeight()) / 2 - 55);
+
+spinner_images = [];
+for (i = 0; i < 12; i++)
+{
+    filename = "spinner-" + (i < 10 ? "0" : "") + i + ".png";
+    spinner_images[i] = Image(filename);
+}
+
+spinner_sprite = Sprite(spinner_images[0]);
+spinner_sprite.SetX(Window.GetX() + (Window.GetWidth() - spinner_images[0].GetWidth()) / 2);
+spinner_sprite.SetY(logo_sprite.GetY() + logo_image.GetHeight() + 18);
+
+status_image = Image.Text("SixelOS is starting...", 0.72, 0.76, 0.84);
+status_sprite = Sprite(status_image);
+status_sprite.SetX(Window.GetX() + (Window.GetWidth() - status_image.GetWidth()) / 2);
+status_sprite.SetY(spinner_sprite.GetY() + spinner_images[0].GetHeight() + 14);
+
+last_frame = -1;
+fun refresh_callback ()
+{
+    frame = Math.Int(Plymouth.GetTime() * 10) % 12;
+    if (frame != last_frame)
+    {
+        spinner_sprite.SetImage(spinner_images[frame]);
+        last_frame = frame;
+    }
+}
+Plymouth.SetRefreshFunction(refresh_callback);
